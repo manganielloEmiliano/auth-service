@@ -1,0 +1,7 @@
+.env
+node_modules/
+mongo/
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
