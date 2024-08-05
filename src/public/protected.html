@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Protegida</title>
+    <style>
+        #welcome {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+        #logout {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Página Protegida</h1>
+    <div id="welcome"></div>
+    <div id="logout">Cerrar sesión</div>
+
+    <script>
+    // Recupera el token de localStorage
+    const token = localStorage.getItem('authToken');
+
+    if (!token) {
+        // Si no hay token, redirige al usuario a la página de login
+        window.location.href = 'http://localhost:8000/';
+    } else {
+        // Muestra un mensaje de bienvenida al usuario
+        document.getElementById('welcome').textContent = 'Bienvenido a la página protegida.';
+
+        // Maneja el botón de cerrar sesión
+        document.getElementById('logout').addEventListener('click', function() {
+            // Elimina el token de localStorage y redirige a la página de inicio de sesión
+            localStorage.removeItem('authToken');
+            window.location.href = 'http://localhost:8000/';
+        });
+    }
+    </script>
+</body>
+</html>
